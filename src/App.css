@@ -1,38 +1,72 @@
-.App {
-  text-align: center;
+h1 {
+  color: #f38e3d !important;
+  font-weight: 700;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+input {
+  padding: 5px 10px;
+  border-radius: 6px;
+  outline: none !important;
+  border: 1px solid rgba(0, 0, 0, 0.25);
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+button {
+  padding: 15px 30px;
+  border: 0;
+  color: #FFFFFF;
+  background-color: #EE4462;
+  border-radius: 25px 28px 15px 34px !important;
+  box-shadow: 1px 2px 2px 2px #bcbcbc;
+  transition: transform 0.2s ease;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.button-orange {
+  background-color: #f38e3d;
 }
 
-.App-link {
-  color: #61dafb;
+.button-pink {
+  background-color: hsl(330.93deg 63.23% 65.74%) !important;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.br-24{
+  border-radius: 24px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.task:hover{
+  background-color: #ee446305;
+}
+/* TaskList animation styles */
+.task-item-enter {
+  opacity: 0;
+  transform: translateY(50%);
+}
+
+.task-item-enter-active {
+  opacity: 1;
+  transform: translateY(0%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+.task-item-exit {
+  opacity: 1;
+  transform: translateY(0%);
+}
+
+.task-item-exit-active {
+  opacity: 0;
+  transform: translateY(-50%);
+  transition: opacity 500ms, transform 500ms;
+}
+
+/* FeedbackMessage styles */
+.feedback-message {
+  position: fixed;
+  bottom: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #333;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
