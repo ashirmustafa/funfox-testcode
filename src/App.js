@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { DragDropContext } from 'react-beautiful-dnd';
 import Task from "./pages/Task/Task";
 import TaskForm from "./pages/TaskForm/TaskForm";
 import TaskList from "./pages/TaskList/TaskList";
@@ -39,23 +40,33 @@ function App() {
 
 
 
+  const onDragEnd = (result) => {
+    if (!result.destination) return;
+
+    const updatedTasks = Array.from(tasks);
+    const [reorderedItem] = updatedTasks.splice(result.source.index, 1);
+    updatedTasks.splice(result.destination.index, 0, reorderedItem);
+
+    setTasks(updatedTasks);
+  };
+
   return (
     // <Routes>
     //   <Route path="/" Component={Tasks}/>
     // </Routes>
-
-    <div className="container-xl">
-    <div className="text-center py-5">
-      <img src="https://funfoxprogram.com.au/Themes/WristwearTheme/Content/images/logo.png" width={300} />
-    </div>
-      <div className="d-flex  flex-column ">
-        <h1 className="text-center">Task Management System</h1>
-        <TaskForm addTask={addTask} />
-        {feedbackMessage && <div className="feedback-message">{feedbackMessage}</div>}
-        <TaskList tasks={tasks} markCompleted={markCompleted} deleteTask={deleteTask} />
+    <DragDropContext onDragEnd={onDragEnd}>
+      <div className="container-xl">
+        <div className="text-center py-5">
+          <img src="https://funfoxprogram.com.au/Themes/WristwearTheme/Content/images/logo.png" width={300} />
+        </div>
+        <div className="d-flex  flex-column ">
+          <h1 className="text-center">Task Management System</h1>
+          <TaskForm addTask={addTask} />
+          {feedbackMessage && <div className="feedback-message">{feedbackMessage}</div>}
+          <TaskList tasks={tasks} markCompleted={markCompleted} deleteTask={deleteTask} />
+        </div>
       </div>
-    </div>
-
+    </DragDropContext>
   );
 }
 
